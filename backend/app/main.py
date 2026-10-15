@@ -9,7 +9,11 @@ from typing import Literal
 
 model = joblib.load("../ml/model/Mental_Health_Model.pkl")
 
-app = FastAPI()
+app = FastAPI(
+    title="MindMetrics AI",
+    description="AI-powered mental wellbeing score prediction API",
+    version="1.0.0",
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -50,11 +54,20 @@ class PredictionResponse(BaseModel):
     predicted_mental_health_score: float
 
 
-@app.get('/')
-def greet():
+
+@app.get("/")
+def root():
     return {
-        "msg":"Welcome to MindMetrics: AI-Powered Mental Score Prediction System",
-        "status":"Working"
+        "message": "Welcome to MindMetrics AI: An AI-Powered Mental Health Score Prediction",
+        "status": "running",
+    }
+
+
+@app.get("/health")
+def health_check():
+    return {
+        "status": "healthy",
+        "service": "mindmetrics-api",
     }
 
 

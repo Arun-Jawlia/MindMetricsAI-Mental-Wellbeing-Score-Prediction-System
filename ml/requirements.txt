@@ -1,6 +1,8 @@
-fastapi
-uvicorn
-pydantic
+numpy
 joblib
 pandas
 scikit-learn
+matplotlib
+seaborn
+joblib
+openpyxl
